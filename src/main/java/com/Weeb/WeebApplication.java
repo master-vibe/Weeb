@@ -1,0 +1,13 @@
+package com.Weeb;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class WeebApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(WeebApplication.class, args);
+	}
+
+}

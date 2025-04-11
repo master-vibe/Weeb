@@ -29,13 +29,13 @@ public class SecuirtyConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http,JwtTokenFilter jwtTokenFilter) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http,TokenFilter jwtTokenFilter) throws Exception{
         return http
                 .cors(t->t.configurationSource(configurationSource)).csrf(csrf->csrf.disable())
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                     .requestMatchers("/ws**").permitAll()
-                    .requestMatchers("/login","/register").permitAll()
+                    .requestMatchers("/api/auth/register","/api/auth/login").permitAll()
                     .anyRequest().authenticated())
                 .authenticationProvider(daoAuthenticationProvider())
                 .addFilterBefore(jwtTokenFilter,UsernamePasswordAuthenticationFilter.class)

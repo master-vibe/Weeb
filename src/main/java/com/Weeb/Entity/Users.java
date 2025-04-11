@@ -9,8 +9,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
@@ -25,7 +23,6 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Users implements UserDetails{
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private String username;
     private String password;
     @CreatedDate

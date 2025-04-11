@@ -4,7 +4,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +22,7 @@ public class UsersService implements UserDetailsService{
     private final JwtUtils jwt;
     private final PasswordEncoder passwordEncoder;
 
-    UsersService(UserRepository userRepository,JwtUtils jwt,BCryptPasswordEncoder passwordEncoder){
+    UsersService(UserRepository userRepository,JwtUtils jwt,PasswordEncoder passwordEncoder){
         this.repository = userRepository;
         this.jwt = jwt;
         this.passwordEncoder=passwordEncoder;
@@ -36,7 +35,7 @@ public class UsersService implements UserDetailsService{
 
     public LoginResponseDto login(LoginRequestDto loginDto) {
         UserDetails user = repository.findByUsername(loginDto.getUsername());
-        if(passwordEncoder.matches(loginDto.getPassword(), user.getPassword())){
+        if(!passwordEncoder.matches(loginDto.getPassword(), user.getPassword())){
             throw new UserException("Username and Password not match.", HttpStatus.UNAUTHORIZED);
         }
         return LoginResponseDto.builder()
@@ -53,7 +52,7 @@ public class UsersService implements UserDetailsService{
         repository.save(
             Users.builder()
                 .username(requestDto.getUsername())
-                .password(requestDto.getPassword())
+                .password(passwordEncoder.encode(requestDto.getPassword()))
                 .build()
             );
         return RegisterResponseDto.builder()

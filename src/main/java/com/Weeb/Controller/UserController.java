@@ -1,6 +1,7 @@
 package com.Weeb.Controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,12 +25,16 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> login(@RequestBody LoginRequestDto loginDto){
-        usersService.login(loginDto);
-        return ResponseEntity.ok(new LoginResponseDto());
+        return ResponseEntity.ok(usersService.login(loginDto));
     }
 
     @PostMapping("/register")
     public ResponseEntity<RegisterResponseDto> register(@RequestBody RegisterRequestDto registerDto){
         return ResponseEntity.ok( usersService.registerUser(registerDto));
+    }
+
+    @GetMapping("/check")
+    public ResponseEntity<String> check(){
+        return ResponseEntity.ok("Health Check Successful");
     }
 }

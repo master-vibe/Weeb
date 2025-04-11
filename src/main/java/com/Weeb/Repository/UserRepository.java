@@ -10,7 +10,12 @@ import com.Weeb.Entity.Users;
 @EnableJpaRepositories
 public interface UserRepository extends JpaRepository<Users, String> {
 
-    @Query(value = "SELECT u FROM users u WHERE u.username = :username",nativeQuery = true)
+    @Query("SELECT u FROM Users u WHERE u.username = :username")
     Users findByUsername(@Param("username") String username);
 
+    @Query("SELECT COUNT(u) > 0 FROM Users u WHERE u.username = :username")
+    boolean isUsernameAvailable(@Param("username") String username);
+
+    @Query("SELECT u FROM Users u WHERE u.username = :username AND u.password = :password")
+    Users findByUsernamePassword(@Param("username") String username, @Param("password") String password);
 }

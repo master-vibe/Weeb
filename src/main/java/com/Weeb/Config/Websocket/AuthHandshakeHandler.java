@@ -1,4 +1,4 @@
-package com.Weeb.Config;
+package com.Weeb.Config.Websocket;
 
 import java.security.Principal;
 import java.util.Map;

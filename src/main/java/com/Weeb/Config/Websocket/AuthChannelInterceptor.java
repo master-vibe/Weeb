@@ -1,4 +1,4 @@
-package com.Weeb.Config;
+package com.Weeb.Config.Websocket;
 
 import org.springframework.lang.Nullable;
 import org.springframework.messaging.Message;

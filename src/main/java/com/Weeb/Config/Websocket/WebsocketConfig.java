@@ -1,4 +1,4 @@
-package com.Weeb.Config;
+package com.Weeb.Config.Websocket;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

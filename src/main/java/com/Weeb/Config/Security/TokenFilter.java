@@ -34,11 +34,11 @@ public class TokenFilter extends OncePerRequestFilter {
             return;
         }
 
-        String username = jwt.extractUsername(authHeader);
+        String tokenUser = jwt.extractUsername(authHeader);
 
-        if (username != null && jwt.isTokenValid(authHeader) && SecurityContextHolder.getContext().getAuthentication() == null) {
+        if (tokenUser != null && jwt.isTokenValid(authHeader)) {
             UsernamePasswordAuthenticationToken authToken =
-                    new UsernamePasswordAuthenticationToken(username, null, null);
+                    new UsernamePasswordAuthenticationToken(tokenUser, null, null);
             SecurityContextHolder.getContext().setAuthentication(authToken);
         }
 

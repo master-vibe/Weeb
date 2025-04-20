@@ -75,5 +75,5 @@ To run the app locally:
 ## 👨‍💻 Author
 
 Developed with ❤️ by **Ashique Mohammad F**  
-GitHub: [ashiqueMohammadF](https://github.com/ashiqueMohammadF) *(Update link if needed)*
+GitHub: [Ashique Mohammad F](https://github.com/master-vibe)
 

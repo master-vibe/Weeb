@@ -5,7 +5,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+// import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfigurationSource;
 
@@ -28,7 +28,7 @@ public class SecuirtyConfig {
                     .requestMatchers("/ws**").permitAll()
                     .requestMatchers("/api/auth/register","/api/auth/login").permitAll()
                     .anyRequest().permitAll())  
-                .addFilterBefore(jwtTokenFilter,UsernamePasswordAuthenticationFilter.class)
+                // .addFilterBefore(jwtTokenFilter,UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 }

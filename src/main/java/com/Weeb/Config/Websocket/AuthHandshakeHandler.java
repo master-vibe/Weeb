@@ -10,6 +10,7 @@ import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
 
 @Component
+@SuppressWarnings("null")
 public class AuthHandshakeHandler extends DefaultHandshakeHandler {
 
     @Override

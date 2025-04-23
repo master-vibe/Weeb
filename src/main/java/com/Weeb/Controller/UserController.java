@@ -50,6 +50,11 @@ public class UserController {
         return ResponseEntity.ok(usersService.addContact(username, contact));
     }
 
+    @PostMapping("/validate")
+    public ResponseEntity<String> validate() {
+        return ResponseEntity.ok("Validated");
+    }
+
     @GetMapping("/check")
     public ResponseEntity<String> check() {
         return ResponseEntity.ok("Health Check Successful");

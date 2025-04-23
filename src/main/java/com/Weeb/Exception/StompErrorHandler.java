@@ -15,6 +15,7 @@ public class StompErrorHandler extends StompSubProtocolErrorHandler {
         super();
     }
 
+    @SuppressWarnings("null")
     @Override
     @Nullable
     public Message<byte[]> handleClientMessageProcessingError(@Nullable Message<byte[]> clientMessage, Throwable ex) {

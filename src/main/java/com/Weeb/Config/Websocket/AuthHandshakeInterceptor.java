@@ -19,12 +19,14 @@ import com.Weeb.Service.JwtUtils;
 import jakarta.servlet.http.Cookie;
 
 @Component
+@SuppressWarnings("null")
 public class AuthHandshakeInterceptor implements HandshakeInterceptor {
     private final JwtUtils jwt;
 
     AuthHandshakeInterceptor(JwtUtils jwtUtils) {
         this.jwt = jwtUtils;
     }
+    
     @Override
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
     Map<String, Object> attributes) throws Exception {
@@ -42,6 +44,7 @@ public class AuthHandshakeInterceptor implements HandshakeInterceptor {
         }
         return false;
     }
+
 
     @Override
     public void afterHandshake(ServerHttpRequest arg0, ServerHttpResponse arg1, WebSocketHandler arg2,
